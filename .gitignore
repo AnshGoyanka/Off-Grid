@@ -1,0 +1,38 @@
+node_modules/
+backend/node_modules/
+
+# Environment secrets
+backend/.env
+
+# Generic secret/env files
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+dist/
+build/
+coverage/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+ios/build/
+ios/Pods/
+
+# OS/editor files
+.DS_Store
+.vscode/
+
+# Native/signing artifacts
+*.keystore
+*.jks
+
+# Temporary scaffold directory
+OffGridNative/

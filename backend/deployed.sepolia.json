@@ -1,0 +1,10 @@
+{
+  "network": "celo-sepolia",
+  "chainId": 11142220,
+  "deployedAt": "2026-03-12T20:34:49.806Z",
+  "deployer": "0xdC97A0631c100D514A2b45a7d2252570c6eFdf22",
+  "contracts": {
+    "offgridTestToken": "0x631321414e73CA80a108E39cc13E87F1AA7F74D8",
+    "offgridSettlementLog": "0x05AB708Ee93f1085832682F7b3D5997aC35a615A"
+  }
+}
