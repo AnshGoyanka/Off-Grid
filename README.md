@@ -2,7 +2,25 @@
 
 Resilient, offline-first peer-to-peer payments over BLE mesh with Algorand-backed settlement.
 
-Off-Grid is a React Native + TypeScript system designed for high-friction environments where internet-first fintech fails. Devices exchange signed payment intents locally over Bluetooth Low Energy (BLE), maintain a local ledger for continuity, and optionally settle to Algorand TestNet once connectivity is available.
+![Platform](https://img.shields.io/badge/platform-React%20Native-20232a?logo=react)
+![Chain](https://img.shields.io/badge/chain-Algorand%20TestNet-000000)
+![Architecture](https://img.shields.io/badge/architecture-Offline--First-0a7ea4)
+![Backend](https://img.shields.io/badge/backend-Express%20TypeScript-2d6a4f)
+![Status](https://img.shields.io/badge/status-Hackathon%20MVP-f4a261)
+
+Off-Grid is a React Native + TypeScript system designed for high-friction environments where connectivity-dependent payment rails fail. Devices exchange signed payment intents locally over Bluetooth Low Energy (BLE), maintain a local ledger for continuity, and optionally settle to Algorand TestNet once connectivity is restored.
+
+## 30-Second Pitch
+
+Off-Grid is a payments continuity layer for environments where internet access cannot be assumed. Instead of blocking transactions when connectivity drops, the system executes signed transfer intent over BLE mesh, records deterministic local state transitions, and defers settlement to Algorand when a gateway reconnects. The result is a practical architecture for resilient commerce, not a connectivity-bound demo.
+
+## Judge Snapshot
+
+- Problem: digital payments fail hard in low-connectivity environments
+- Approach: decouple local intent execution from network settlement finality
+- Build: mobile mesh client + relay backend + Algorand settlement path
+- Outcome: demonstrable end-to-end offline-to-online transaction lifecycle
+- Maturity: hackathon MVP built with production-style design boundaries
 
 ## Executive Summary
 
@@ -36,7 +54,7 @@ The value proposition is not theoretical decentralization. It is operational con
 
 ## Hackathon Scope and Outcome
 
-This repository intentionally optimizes for a high-credibility MVP:
+This repository intentionally optimizes for a high-credibility hackathon MVP:
 
 - End-to-end offline payment workflow on mobile
 - Algorand TestNet settlement integration through backend relay
@@ -44,6 +62,16 @@ This repository intentionally optimizes for a high-credibility MVP:
 - Automated test coverage for core services and backend routes
 
 This is a production-minded prototype, not a slideware demo.
+
+## Real-World Deployment Thesis
+
+Off-Grid is designed for operational environments where latency and availability are constrained by physical infrastructure, not application quality. The architecture assumes intermittent links, peer churn, and delayed finality. By treating internet connectivity as an optimization rather than a hard prerequisite, the system better matches real field-network behavior.
+
+Candidate deployment surfaces:
+
+- Emergency logistics and community relief disbursement
+- Temporary economic zones such as camps, festivals, and pop-up markets
+- Rural merchant ecosystems with periodic backhaul availability
 
 ## Key Capabilities
 
@@ -79,14 +107,10 @@ This is a production-minded prototype, not a slideware demo.
 
 ## Technical Decisions
 
-- BLE mesh over internet messaging:
-  enables strictly local communication path for transfer intent propagation.
-- Deferred settlement model:
-  preserves UX continuity offline while retaining on-chain auditability.
-- Compatibility endpoints in backend:
-  allows mobile iteration speed without breaking core app flows.
-- Rate-limited relay endpoints:
-  reduces abuse surface in public test environments.
+- BLE mesh over internet messaging enables a strictly local communication path for transfer intent propagation.
+- The deferred settlement model preserves user continuity offline while retaining on-chain auditability.
+- Compatibility endpoints in the backend improve mobile iteration speed without breaking core app flows.
+- Rate-limited relay endpoints reduce abuse surface in public test environments.
 
 ## Tech Stack
 
@@ -228,7 +252,30 @@ Uses configured mnemonic-based faucet flow, or returns external faucet guidance.
 4. Reintroduce connectivity and call settlement.
 5. Show immutable finality using transaction status endpoint.
 
-This sequence demonstrates continuity, resilience, and settlement integrity in one pass.
+This sequence demonstrates continuity, resilience, and verifiable settlement finality in one pass.
+
+## Why This Is Defensible
+
+The project is defensible because it is not just a wallet UI on a testnet. It combines multiple hard constraints into one coherent system:
+
+- Offline transport and peer discovery on commodity mobile hardware
+- Deterministic local state transitions under asynchronous mesh propagation
+- Explicit separation of intent execution from settlement finality
+- Chain-integrated verification endpoints for post-connectivity auditability
+- Practical backend controls such as rate limiting and operational safety defaults
+
+In other words, the defensibility comes from architecture and execution discipline, not from any single SDK integration.
+
+## Metrics to Report in Demo
+
+For demo-day credibility, capture and present these measurements:
+
+- Time to first peer discovery in a two-device setup
+- Median local transfer acknowledgment latency
+- Settlement confirmation time from reconnect to confirmed status
+- End-to-end success rate across repeated offline transfer cycles
+
+These metrics make evaluation objective and communicate engineering maturity.
 
 ## Engineering Quality
 
